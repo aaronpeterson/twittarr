@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+  include ../includes/head
+  if (req.isAuthenticated())
+  body.login-screen
+    #cover.body-cover
+    #coverBlur.body-cover
+    #parrot
+      img(src='/img/parrot-splash.png')
+    include ../includes/header
+    .container
+      block main
+      block content
+    include ../includes/footer

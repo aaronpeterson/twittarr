@@ -1,0 +1,70 @@
+extends ../layouts/default
+
+
+block content
+  .row.twitter-container
+    .col-lg-4 
+      .logged-user
+        p #{req.user.name}
+        - if (req.user.provider == 'facebook')
+          img(class='profile-image', src='http://graph.facebook.com/'+req.user.facebook.id+'/picture')
+        - if (req.user.provider == 'github')
+          img(class='profile-image', src=req.user.github.avatar_url)
+        - if (req.user.provider == 'twitter')
+          img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
+
+        a.btn.btn-primary.flat.btn-lg.new-tweet(data-toggle='modal', href='#myModal') New Tweet
+
+       
+        #myModal.modal.fade
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title New Tweet
+              .modal-body
+                .row
+                  form(method='post', action='/tweets', enctype='multipart/form-data')
+                    .control-group
+                      label.control-label(for='tweet')
+                      br
+                      .controls
+                        textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
+                    br
+                    .form-actions
+                      button.btn.btn-primary.flat(type='submit') Publish Tweet
+                      a.btn(href='/tweets', title='cancel') Cancel
+              .modal-footer
+                p Hope you enjoy it!
+    .col-lg-8
+      each tweet in tweets
+        .well.flat
+          .tweet
+            .row
+              .col-lg-6.pull-left
+                h5
+                  - var name = tweet.user.name ? tweet.user.name : tweet.user.username
+
+                  //- if (tweet.user.name)
+                  //-   a(href="/users/"+tweet.user._id)=tweet.user.name
+                  a(href="/users/"+tweet.user._id)= name
+              .col-lg-5.date
+                .pull-right
+                  = formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
+            p=tweet.body
+            form.center.form-inline.confirm.settings-tweet(action="/tweets/"+tweet.id, method="post")
+              if (tweet.user._id == req.user.id)
+                 a.btn.btn-success.flat.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
+                 input(type="hidden", name="_method", value="DELETE")
+                 button.btn.flat(type="submit") delete
+               if (tweet.user._id != req.user.id)
+                 a.btn.btn-success(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
+          .comment
+            each comment in tweet.comments
+              include ../comments/comment
+            hr
+            include ../comments/form
+            
+    - if (pages > 1)
+      ul.pagination
+        != createPagination(pages, page)

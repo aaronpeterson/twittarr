@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'social-icons-lite';
+  src: url('../font/social-icons-lite.eot?79620931');
+  src: url('../font/social-icons-lite.eot?79620931#iefix') format('embedded-opentype'),
+       url('../font/social-icons-lite.woff?79620931') format('woff'),
+       url('../font/social-icons-lite.ttf?79620931') format('truetype'),
+       url('../font/social-icons-lite.svg?79620931#social-icons-lite') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'social-icons-lite';
+    src: url('../font/social-icons-lite.svg?79620931#social-icons-lite') format('svg');
+  }
+}
+*/
+ 
+ [class^="social-icon-lite-"]:before, [class*=" social-icon-lite-"]:before {
+  font-family: "social-icons-lite";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.social-icon-lite-star:before { content: '\e811'; } /* '' */
+.social-icon-lite-star-empty:before { content: '\e812'; } /* '' */
+.social-icon-lite-heart-empty:before { content: '\e810'; } /* '' */
+.social-icon-lite-heart:before { content: '\e80f'; } /* '' */
+.social-icon-lite-retweet:before { content: '\e816'; } /* '' */
+.social-icon-lite-comment:before { content: '\e817'; } /* '' */
+.social-icon-lite-facebook:before { content: '\e807'; } /* '' */
+.social-icon-lite-pinterest-squared:before { content: '\e802'; } /* '' */
+.social-icon-lite-gplus-squared:before { content: '\e813'; } /* '' */
+.social-icon-lite-linkedin:before { content: '\e809'; } /* '' */
+.social-icon-lite-reply:before { content: '\e815'; } /* '' */
+.social-icon-lite-twitter-squared:before { content: '\e805'; } /* '' */
+.social-icon-lite-vimeo:before { content: '\e80b'; } /* '' */
+.social-icon-lite-twitter:before { content: '\e806'; } /* '' */
+.social-icon-lite-linkedin-squared-1:before { content: '\e808'; } /* '' */
+.social-icon-lite-facebook-squared:before { content: '\e800'; } /* '' */
+.social-icon-lite-vimeo-squared:before { content: '\e80a'; } /* '' */
+.social-icon-lite-gplus:before { content: '\e814'; } /* '' */
+.social-icon-lite-tumblr-squared:before { content: '\e804'; } /* '' */
+.social-icon-lite-tumblr:before { content: '\e80d'; } /* '' */
+.social-icon-lite-pinterest:before { content: '\e80e'; } /* '' */
+.social-icon-lite-youtube:before { content: '\e80c'; } /* '' */
+.social-icon-lite-instagram:before { content: '\e803'; } /* '' */
+.social-icon-lite-instagram-squared:before { content: '\e801'; } /* '' */

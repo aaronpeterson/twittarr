@@ -1,0 +1,19 @@
+mixin bootstrapTextField(options, errors)
+	if (!options.type)
+		- options.type = "text"
+
+	// name, label, type, value, help, errors
+	- var controlGroupClass
+	if errors && errors[options.name] && errors[options.name].type
+		- controlGroupClass = "control-group error"
+	else
+		- controlGroupClass = "control-group"
+	div(class="#{controlGroupClass}")
+		label.control-label(for="input#{options.name}") #{options.label}
+		.controls
+			input(type="#{options.type}", name=options.name, id="input#{options.name}", placeholder=options.label, value=options.value)
+			if errors && errors[options.name] && errors[options.name].type
+				- helpText = errors[options.name].type
+			else
+				- helpText = options.help
+			span.help-block #{helpText}

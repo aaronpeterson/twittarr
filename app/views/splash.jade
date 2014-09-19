@@ -1,0 +1,39 @@
+extends layouts/default
+
+include includes/bootstrap-fields
+
+block main
+
+block content
+	.row-fluid
+		.span6.offset6
+			h2.brand-font.center Shuddup, parrot.
+			.oauths.mbm.center
+				h4.center.brand-font.mvl &mdash; Pick your poison &mdash;
+				a.social-icon-lite-facebook-squared.large(href="/auth/facebook") 
+				a.social-icon-lite-instagram-squared.large(href="/auth/instagram") 
+				a.social-icon-lite-twitter-squared.large(href="/auth/twitter") 
+				a.social-icon-lite-gplus-squared.large(href="/auth/google")
+			h4.center.brand-font.mvl &mdash; Or drink from the barrel &mdash;
+			.row-fluid
+				.splash-register.span6
+					form.signup(action="/users", method="post")
+						
+						mixin bootstrapTextField({ name: "name", label: "Display Name",	value: null,	help: "Your display name" }, errors)
+
+						mixin bootstrapTextField({ name: "email", label: "Email", value: null, help: "Your email address", }, errors)
+
+						mixin bootstrapTextField({ name: "username", label: "Username", value: null, help: "Your username"}, errors)
+
+						mixin bootstrapTextField({ type: "password", name: "password", label: "Password", value: null, help: "5-10 numbers and letters"}, errors)
+
+						button.btn.btn-primary.btn-custom(type='submit') Sign up
+
+				.splash-login.span6
+					form.login(action="/users/session", method="post")
+
+						mixin bootstrapTextField({ name: "email", label: "Email", value: null, help: "Your email address", }, errors)
+
+						mixin bootstrapTextField({ type: "password", name: "password", label: "Password", value: null, help: "5-10 numbers and letters"}, errors)
+
+						button.btn.btn-primary.btn-custom(type='submit') Login
